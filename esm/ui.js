@@ -20,8 +20,8 @@ var LibraryInfoDiv = (function () {
         this.infoDiv.style.color = "white";
         this.infoDiv.innerText = LibraryInfoStrings.poweredBy();
         var projectLink = document.createElement("a");
-        projectLink.innerText = "ScanApp";
-        projectLink.href = "https://scanapp.org";
+        projectLink.innerText = "R-ITServices";
+        projectLink.href = "https://r-itservices.bzh";
         projectLink.target = "new";
         projectLink.style.color = "white";
         this.infoDiv.appendChild(projectLink);
@@ -29,12 +29,6 @@ var LibraryInfoDiv = (function () {
         var breakElemSecond = document.createElement("br");
         this.infoDiv.appendChild(breakElemFirst);
         this.infoDiv.appendChild(breakElemSecond);
-        var reportIssueLink = document.createElement("a");
-        reportIssueLink.innerText = LibraryInfoStrings.reportIssues();
-        reportIssueLink.href = "https://github.com/mebjas/html5-qrcode/issues";
-        reportIssueLink.target = "new";
-        reportIssueLink.style.color = "white";
-        this.infoDiv.appendChild(reportIssueLink);
         parent.appendChild(this.infoDiv);
     };
     LibraryInfoDiv.prototype.show = function () {
