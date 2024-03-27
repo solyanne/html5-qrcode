@@ -754,14 +754,14 @@ export class Html5QrcodeScanner {
             = Html5QrcodeScannerStrings.scanButtonStartScanningText();
         cameraActionContainer.appendChild(cameraActionStartButton);
 
-        const cameraActionStopButton
-            = BaseUiElementFactory.createElement<HTMLButtonElement>(
-                "button", PublicUiElementIdAndClasses.CAMERA_STOP_BUTTON_ID);
-        cameraActionStopButton.innerText
-            = Html5QrcodeScannerStrings.scanButtonStopScanningText();
-        cameraActionStopButton.style.display = "none";
-        cameraActionStopButton.disabled = true;
-        cameraActionContainer.appendChild(cameraActionStopButton);
+        // const cameraActionStopButton
+        //     = BaseUiElementFactory.createElement<HTMLButtonElement>(
+        //         "button", PublicUiElementIdAndClasses.CAMERA_STOP_BUTTON_ID);
+        // cameraActionStopButton.innerText
+        //     = Html5QrcodeScannerStrings.scanButtonStopScanningText();
+        // cameraActionStopButton.style.display = "none";
+        // cameraActionStopButton.disabled = true;
+        // cameraActionContainer.appendChild(cameraActionStopButton);
 
         // Optional torch button support.
         let torchButton: TorchButton;
@@ -833,8 +833,8 @@ export class Html5QrcodeScanner {
                 $this.qrCodeSuccessCallback!,
                 $this.qrCodeErrorCallback!)
                 .then((_) => {
-                    cameraActionStopButton.disabled = false;
-                    cameraActionStopButton.style.display = "inline-block";
+                    // cameraActionStopButton.disabled = false;
+                    // cameraActionStopButton.style.display = "inline-block";
                     resetCameraActionStartButton(/* shouldShow= */ false);
 
                     const cameraCapabilities
@@ -863,37 +863,37 @@ export class Html5QrcodeScanner {
             cameraActionStartButton.click();
         }
 
-        cameraActionStopButton.addEventListener("click", (_) => {
-            if (!$this.html5Qrcode) {
-                throw "html5Qrcode not defined";
-            }
-            cameraActionStopButton.disabled = true;
-            $this.html5Qrcode.stop()
-                .then((_) => {
-                    // Swap link is required if more than one scan types are
-                    // required.
-                    if(this.scanTypeSelector.hasMoreThanOneScanType()) {
-                        $this.showHideScanTypeSwapLink(true);
-                    }
+        // cameraActionStopButton.addEventListener("click", (_) => {
+        //     if (!$this.html5Qrcode) {
+        //         throw "html5Qrcode not defined";
+        //     }
+        //     cameraActionStopButton.disabled = true;
+        //     $this.html5Qrcode.stop()
+        //         .then((_) => {
+        //             // Swap link is required if more than one scan types are
+        //             // required.
+        //             if(this.scanTypeSelector.hasMoreThanOneScanType()) {
+        //                 $this.showHideScanTypeSwapLink(true);
+        //             }
                     
-                    cameraSelectUi.enable();
-                    cameraActionStartButton.disabled = false;
-                    cameraActionStopButton.style.display = "none";
-                    cameraActionStartButton.style.display = "inline-block";
-                    // Reset torch state.
-                    if (torchButton) {
-                        torchButton.reset();
-                        torchButton.hide();
-                    }
-                    cameraZoomUi.removeOnCameraZoomValueChangeCallback();
-                    cameraZoomUi.hide();
-                    $this.insertCameraScanImageToScanRegion();
-                }).catch((error) => {
-                    cameraActionStopButton.disabled = false;
-                    $this.setHeaderMessage(
-                        error, Html5QrcodeScannerStatus.STATUS_WARNING);
-                });
-        });
+        //             cameraSelectUi.enable();
+        //             cameraActionStartButton.disabled = false;
+        //             cameraActionStopButton.style.display = "none";
+        //             cameraActionStartButton.style.display = "inline-block";
+        //             // Reset torch state.
+        //             if (torchButton) {
+        //                 torchButton.reset();
+        //                 torchButton.hide();
+        //             }
+        //             cameraZoomUi.removeOnCameraZoomValueChangeCallback();
+        //             cameraZoomUi.hide();
+        //             $this.insertCameraScanImageToScanRegion();
+        //         }).catch((error) => {
+        //             cameraActionStopButton.disabled = false;
+        //             $this.setHeaderMessage(
+        //                 error, Html5QrcodeScannerStatus.STATUS_WARNING);
+        //         });
+        // });
 
         if ($this.persistedDataManager.getLastUsedCameraId()) {
             const cameraId = $this.persistedDataManager.getLastUsedCameraId()!;
