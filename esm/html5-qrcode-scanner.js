@@ -578,8 +578,13 @@ var Html5QrcodeScanner = (function () {
                 shouldDisplay = false;
             }
             this.sectionSwapAllowed = shouldDisplay;
+            try{
+
             this.getDashboardSectionSwapLink().style.display
                 = shouldDisplay ? "inline-block" : "none";
+            }catch(e){
+                console.log(e);
+            }
         }
     };
     Html5QrcodeScanner.prototype.insertCameraScanImageToScanRegion = function () {

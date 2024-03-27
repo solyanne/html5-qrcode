@@ -1034,10 +1034,14 @@ export class Html5QrcodeScanner {
             if (shouldDisplay !== true) {
                 shouldDisplay = false;
             }
+            try{
 
             this.sectionSwapAllowed = shouldDisplay;
             this.getDashboardSectionSwapLink().style.display
-                = shouldDisplay ? "inline-block" : "none";
+                = shouldDisplay ? "inline-block" : "none";}
+            catch(e){
+                console.log(e);
+            }
         }
     }
 

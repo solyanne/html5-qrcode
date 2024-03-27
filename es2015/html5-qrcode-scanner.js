@@ -574,8 +574,12 @@ export class Html5QrcodeScanner {
                 shouldDisplay = false;
             }
             this.sectionSwapAllowed = shouldDisplay;
-            this.getDashboardSectionSwapLink().style.display
+            try{
+                this.getDashboardSectionSwapLink().style.display
                 = shouldDisplay ? "inline-block" : "none";
+            }catch(e){
+                console.log(e)
+            }
         }
     }
     insertCameraScanImageToScanRegion() {
