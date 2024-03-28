@@ -18,17 +18,10 @@ var CameraSelectionUi = (function () {
             cameraSelectionContainer.style.display = "none";
         }
         else {
-            // Remove all except first value in numCameras array
-            this.cameras.splice(1);
-            cameraSelectionContainer.style.display = "none";
-            /* TODO: Here to set multiple cams.
-            // Otherwise, show the number of cameras found as well.
-            const selectCameraString = Html5QrcodeScannerStrings.selectCamera();
+            var selectCameraString = Html5QrcodeScannerStrings.selectCamera();
             cameraSelectionContainer.innerText
-                = `${selectCameraString} (${this.cameras.length})  `;
-                */
+                = "".concat(selectCameraString, " (").concat(this.cameras.length, ")  ");
         }
-
         var anonymousCameraId = 1;
         for (var _i = 0, _a = this.cameras; _i < _a.length; _i++) {
             var camera = _a[_i];

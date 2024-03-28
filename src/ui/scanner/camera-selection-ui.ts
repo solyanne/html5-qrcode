@@ -46,15 +46,10 @@ export class CameraSelectionUi {
             // If only one camera is found, don't show camera selection.
             cameraSelectionContainer.style.display = "none";
         } else {
-            // Remove all except first value in numCameras array
-            this.cameras.splice(1);
-            cameraSelectionContainer.style.display = "none";
-            /* TODO: Here to set multiple cams.
             // Otherwise, show the number of cameras found as well.
             const selectCameraString = Html5QrcodeScannerStrings.selectCamera();
             cameraSelectionContainer.innerText
                 = `${selectCameraString} (${this.cameras.length})  `;
-                */
         }
 
         let anonymousCameraId = 1;
@@ -127,7 +122,7 @@ export class CameraSelectionUi {
     public static create(
         parentElement: HTMLElement,
         cameras: Array<CameraDevice>): CameraSelectionUi {
-        let cameraSelectUi = new CameraSelectionUi(cameras);
+        let cameraSelectUi = new CameraSelectionUi(cameras.length>0?[cameras[0]]:[]);
         cameraSelectUi.render(parentElement);
         return cameraSelectUi;
     }
