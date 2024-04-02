@@ -29,7 +29,11 @@ export class CameraSelectionUi {
             .createElement<HTMLSelectElement>(
             "select",
             PublicUiElementIdAndClasses.CAMERA_SELECTION_SELECT_ID);
-        this.cameras = cameras;
+        if(cameras.length>0){
+            this.cameras =[cameras[0]];
+        }else{
+            this.cameras = cameras;
+        }
         this.options = [];        
     }
 
@@ -46,10 +50,11 @@ export class CameraSelectionUi {
             // If only one camera is found, don't show camera selection.
             cameraSelectionContainer.style.display = "none";
         } else {
+            cameraSelectionContainer.style.display = "none";
             // Otherwise, show the number of cameras found as well.
-            const selectCameraString = Html5QrcodeScannerStrings.selectCamera();
-            cameraSelectionContainer.innerText
-                = `${selectCameraString} (${this.cameras.length})  `;
+            // const selectCameraString = Html5QrcodeScannerStrings.selectCamera();
+            // cameraSelectionContainer.innerText
+            //     = `${selectCameraString} (${this.cameras.length})  `;
         }
 
         let anonymousCameraId = 1;
